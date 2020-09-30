@@ -1,0 +1,66 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "true #tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "start-example-docker": "docker run --rm -d -p=54321:5432 -v \"$PWD/example/schema.sql:/docker-entrypoint-initdb.d/schema.sql\"  --name=postgraphile-tags-postgres postgres:11.5",
+    "kill-example-docker": "docker kill postgraphile-tags-postgres",
+    "start-example-postgraphile": "yarn postgraphile --connection=postgres://postgres:postgres@localhost:54321/postgres --schema example --append-plugins $PWD/plugins/loadSmartTags.js,$PWD/plugins/extractSmartTags.js,$PWD/plugins/createJsonSchema.js"
+  },
+  "peerDependencies": {
+    "graphile-build-pg": ">4.7",
+    "graphile-utils": ">4.7",
+    "postgraphile": ">4.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "postgraphile-tag-json-tools",
+  "homepage": "https://github.com/mayflower/postgraphile-tag-json-tools",
+  "author": "Lenz Weber",
+  "module": "dist/postgraphile-tag-json-tools.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/postgraphile-tag-json-tools.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/postgraphile-tag-json-tools.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.6.0",
+    "husky": "^4.3.0",
+    "size-limit": "^4.6.0",
+    "tsdx": "^0.14.0",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.3",
+    "graphile-build-pg": ">4.7",
+    "graphile-utils": ">4.7",
+    "postgraphile": ">4.7"
+  }
+}

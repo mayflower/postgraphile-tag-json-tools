@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSONPgSmartTags",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number",
+      "minimum": 1
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "class": {
+          "type": "object",
+          "properties": {
+            "example.tasks": {
+              "$ref": "#/definitions/class:example.tasks"
+            },
+            "tasks": {
+              "$ref": "#/definitions/class:example.tasks"
+            }
+          },
+          "additionalProperties": false
+        },
+        "attribute": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "./pg-smart-tags.schema.json#/definitions/pgEntity"
+          },
+          "propertyNames": {
+            "enum": [
+              "description",
+              "done",
+              "example.tasks.description",
+              "example.tasks.done",
+              "example.tasks.id",
+              "example.tasks.title",
+              "id",
+              "tasks.description",
+              "tasks.done",
+              "tasks.id",
+              "tasks.title",
+              "title"
+            ]
+          }
+        },
+        "constraint": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "./pg-smart-tags.schema.json#/definitions/pgEntity"
+          },
+          "propertyNames": {
+            "enum": [
+              "tasks_pkey"
+            ]
+          }
+        },
+        "procedure": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "./pg-smart-tags.schema.json#/definitions/pgEntity"
+          },
+          "propertyNames": {
+            "enum": []
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "class:example.tasks": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "$ref": "./pg-smart-tags.schema.json#/definitions/tags"
+        },
+        "description": {
+          "type": "string"
+        },
+        "attribute": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "./pg-smart-tags.schema.json#/definitions/pgEntity"
+          },
+          "propertyNames": {
+            "enum": [
+              "description",
+              "done",
+              "id",
+              "title"
+            ]
+          }
+        },
+        "constraint": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "./pg-smart-tags.schema.json#/definitions/pgEntity"
+          },
+          "propertyNames": {
+            "enum": [
+              "tasks_pkey"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

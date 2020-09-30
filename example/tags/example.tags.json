@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "$schema": "./pg-database-smart-tags.schema.json",
+  "config": {
+    "class": {
+      "example.tasks": {
+        "attribute": {
+          "description": {
+            "tags": {
+              "omit": "create,update,delete"
+            }
+          }
+        }
+      }
+    },
+    "procedure": {}
+  }
+}
