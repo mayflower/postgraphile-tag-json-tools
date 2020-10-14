@@ -46,7 +46,8 @@ module.exports = {
   options: {
     graphileBuildOptions: {
       tagJsonPlugin: {
-        tagFileFolder: join(__dirname, 'example', 'tags')
+        tagFileFolder: join(__dirname, 'example', 'tags'),
+        jsonExtension: 'json'
       }
     },
   },

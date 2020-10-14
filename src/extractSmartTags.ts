@@ -6,7 +6,7 @@ import { sortEntities } from './sortEntities';
 import { getOptions } from './getOptions';
 
 export const extractSmartTags: Plugin = (builder, graphileBuildOptions) => {
-  const { outputDir } = getOptions(graphileBuildOptions);
+  const { outputDir, jsonExtension } = getOptions(graphileBuildOptions);
 
   builder.hook('init', (_, build) => {
     const {
@@ -109,7 +109,7 @@ export const extractSmartTags: Plugin = (builder, graphileBuildOptions) => {
 
     for (const [namespace, json] of Object.entries(smart)) {
       writeFile(
-        `${outputDir}/${namespace}.tags.json`,
+        `${outputDir}/${namespace}.tags.${jsonExtension}`,
         JSON.stringify(json, undefined, 2),
         e => {
           if (e) {

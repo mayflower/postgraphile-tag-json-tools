@@ -6,10 +6,10 @@ import { makePluginByCombiningPlugins } from 'graphile-utils';
 import { getOptions } from './getOptions';
 
 export const loadSmartTags: Plugin = (builder, graphileBuildOptions) => {
-  const { outputDir } = getOptions(graphileBuildOptions);
+  const { outputDir, jsonExtension } = getOptions(graphileBuildOptions);
 
   const metaPlugins = readdirSync(outputDir)
-    .filter(file => file.endsWith('.tags.json'))
+    .filter(file => file.endsWith(`.tags.${jsonExtension}`))
     .map(file => makePgSmartTagsFromFilePlugin(join(outputDir, file)));
 
   const combinedPlugin = makePluginByCombiningPlugins(...metaPlugins);

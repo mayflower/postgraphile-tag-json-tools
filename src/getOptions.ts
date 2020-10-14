@@ -7,5 +7,7 @@ export function getOptions(graphileBuildOptions: Options) {
       'please specify `graphileBuildOptions.tagJsonPlugin.tagFileFolder`'
     );
   }
-  return { outputDir };
+  const jsonExtension =
+    graphileBuildOptions.tagJsonPlugin?.jsonExtension || 'json';
+  return { outputDir, jsonExtension };
 }

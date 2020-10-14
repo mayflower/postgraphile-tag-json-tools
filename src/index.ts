@@ -1,5 +1,6 @@
 export interface PluginOptions {
   tagFileFolder: string;
+  jsonExtension?: string;
 }
 
 declare module 'graphile-build' {
