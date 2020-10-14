@@ -14,7 +14,13 @@ import { getOptions } from './getOptions';
 
 class JSONSet<T> extends Set<T> {
   toJSON() {
-    return Array.from(this).sort();
+    let arr = Array.from(this);
+    arr.sort((a, b) =>
+      typeof a === 'number' && typeof b === 'number'
+        ? a - b
+        : String(a).localeCompare(String(b))
+    );
+    return arr;
   }
 }
 
