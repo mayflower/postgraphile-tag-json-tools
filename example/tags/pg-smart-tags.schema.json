@@ -43,16 +43,50 @@
       "$id": "#tags",
       "type": "object",
       "properties": {
-        "omit": { "oneOf": [{ "type": "boolean" }, { "type": "string" }] },
-        "notNull": { "type": "boolean" },
-        "filterable": { "type": "boolean" },
-        "sortable": { "type": "boolean" },
+        "deprecated": { "type": "string" },
         "name": { "type": "string" },
         "fieldName": { "type": "string" },
         "foreignFieldName": { "type": "string" },
         "foreignSingleFieldName": { "type": "string" },
+        "resultFieldName": { "type": "string" },
+        "omit": {
+          "oneOf": [
+            {
+              "enum": [
+                true,
+                "create",
+                "read",
+                "update",
+                "delete",
+                "filter",
+                "order",
+                "all",
+                "many",
+                "execute"
+              ]
+            },
+            { "type": "string" }
+          ]
+        },
+
+        "sortable": { "enum": [true] },
+
+        "filterable": { "enum": [true] },
+        "simpleCollections": { "enum": ["omit", "both", "only"] },
+        "arg0variant": { "enum": ["patch", "base"] },
+        "arg1variant": { "enum": ["patch", "base"] },
+        "arg2variant": { "enum": ["patch", "base"] },
+        "arg3variant": { "enum": ["patch", "base"] },
+        "arg4variant": { "enum": ["patch", "base"] },
+        "arg5variant": { "enum": ["patch", "base"] },
+        "arg6variant": { "enum": ["patch", "base"] },
+        "arg7variant": { "enum": ["patch", "base"] },
+        "arg8variant": { "enum": ["patch", "base"] },
+        "arg9variant": { "enum": ["patch", "base"] },
+        "notNull": { "enum": [true] },
+        "primaryKey": { "type": "string" },
         "foreignKey": { "type": "string" },
-        "primaryKey": { "type": "string" }
+        "unique": { "enum": [true] }
       },
       "additionalProperties": false
     },
